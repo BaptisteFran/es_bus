@@ -1,17 +1,17 @@
 onJob = 0
 local player = PlayerId()
 
--- Configure the coordinates where the bus should be placed.
+-- Configure the coordinates where the bus should be placed. // Il faudrait utiliser GetHashKey("bus") // We should use GetHashKey("bus")
 local bus = {
-   { hash=0xD577C962, x=918.592, y=-166.732, z=74.250, a=100.938 }, -- changer coordonnées pour dépot bus
-   { hash=0xD577C962, x=917.207, y=-171.100, z=74.489, a=85.422 },  -- changer coordonnées pour dépot bus
+   { hash=0xD577C962, x=918.592, y=-166.732, z=74.250, a=100.938 }, -- changer coordonnées pour dépot bus // change coords for bus station
+   { hash=0xD577C962, x=917.207, y=-171.100, z=74.489, a=85.422 },  -- changer coordonnées pour dépot bus // change coords for bus station
   }
 
 	-- Configure the coordinates where the bus drivers (npc) should be placed.
 local peds = {
-  {type=4, hash=0x7e6a64b7, x=894.422, y=-182.196, z=74.700, a=269.449}, -- changer les coordonnées
-  {type=4, hash=0x7e6a64b7, x=895.422, y=-180.234, z=74.700, a=260.402}, -- changer les coordonnées
-  {type=4, hash=0x7e6a64b7, x=900.742, y=-174.138, z=73.936, a=265.213}, -- changer les coordonnées
+  {type=4, hash=0x7e6a64b7, x=894.422, y=-182.196, z=74.700, a=269.449}, -- changer les coordonnées // change coords for bus station to set bus drivers
+  {type=4, hash=0x7e6a64b7, x=895.422, y=-180.234, z=74.700, a=260.402}, -- changer les coordonnées // change coords for bus station to set bus drivers
+  {type=4, hash=0x7e6a64b7, x=900.742, y=-174.138, z=73.936, a=265.213}, -- changer les coordonnées // change coords for bus station to set bus drivers
   }
 
 AddEventHandler('onClientMapStart', function()
@@ -26,7 +26,7 @@ while not HasModelLoaded(0x7e6a64b7) do
 end
 
 -- Set a blip on the map for Bus station -- 
-downtownc = AddBlipForCoord(900.461, -181.466, 73.89) -- /////// AJOUTER BLIP BUS STATION COORD //////
+downtownc = AddBlipForCoord(900.461, -181.466, 73.89) -- /////// ADD BLIP BUS STATION COORD //////
 SetBlipSprite(Busstation, 66)
 SetBlipDisplay(Busstation, 3)
 SetBlipNameFromTextFile(Busstation, "BUS_BLIP")
@@ -40,12 +40,12 @@ end
 -- Spawn the Bus drivers to the coordinates (testing)
 for _, item in pairs(peds) do
 	ped = CreatePed(item.type, item.hash, item.x, item.y, item.z, item.a, false, true)
-	GiveWeaponToPed(ped, 0x99B507EA, 2800, false, true)
+	GiveWeaponToPed(ped, 0x99B507EA, 2800, false, true) -- I gave them knives instead of pistols
 	SetPedCombatAttributes(ped, 46, true)
 	SetPedFleeAttributes(ped, 0, 0)
 	SetPedArmour(ped, 100)
 	SetPedMaxHealth(ped, 100)
-	SetPedRelationshipGroupHash(ped, GetHashKey("CIVMALE"))  -- //// LES FAIRE ATTAQUER QUAND ON PREND BUS? ///////
+	SetPedRelationshipGroupHash(ped, GetHashKey("CIVMALE"))  -- //// LES FAIRE ATTAQUER QUAND ON PREND BUS? /////// Maybe make them attack when we pick up the bus
 	TaskStartScenarioInPlace(ped, "WORLD_HUMAN_GUARD_STAND_PATROL", 0, true)
 	SetPedCanRagdoll(ped, false)
 	SetPedDiesWhenInjured(ped, false)
@@ -61,7 +61,7 @@ function StartJob(jobid)
 		jobs.coords.cx[1],jobs.coords.cy[1],jobs.coords.cz[1] = 293.476,-590.163,42.7371
 		jobs.coords.cx[2],jobs.coords.cy[2],jobs.coords.cz[2] = 253.404,-375.86,44.0819
 		jobs.coords.cx[3],jobs.coords.cy[3],jobs.coords.cz[3] = 120.808,-300.416,45.1399
-		 -- ///// METTRE LES COORDS DES ARRETS DE BUS //////
+		 -- ///// METTRE LES COORDS DES ARRETS DE BUS ////// DELETE THE JOB COORDS AND ADD EVERY BUS STOPS COORDS
 
 		jobs.cars[1] = GetVehiclePedIsUsing(GetPlayerPed(-1))
 		jobs.flag[1] = 0
@@ -93,7 +93,7 @@ function DrawMissionText(m_text, showtime)
 	DrawSubtitleTimed(showtime, 1)
 end
 
-function showLoadingPromt(showText, showTime, showType) -- /////////// ARRET ICI ///////////////
+function showLoadingPromt(showText, showTime, showType) -- /////////// ARRET ICI /////////////// I STOPPED HERE //////////////
 	Citizen.CreateThread(function()
 		Citizen.Wait(0)
 		N_0xaba17d7ce615adbf("STRING") -- set type
