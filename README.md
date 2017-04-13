@@ -1,5 +1,4 @@
-# Bus job for es_freeroam
-
+# Bus job based on MarkViolla's taxi script
 This is based on the taxi Job.
 /!\ Not working at all for the moment !! /!\
 
