@@ -1,13 +1,18 @@
--- ped = ig_trafficwarden, 0x5719786d
--- bus = bus, -713569950, 0xD577C962
+-- ped = ig_trafficwarden, 0x5719786d, GetHashkey("ig_trafficwarden")
+-- bus = bus, -713569950, 0xD577C962, GetHashkey("bus")
 
 local player = PlayerId()
 
 
 -- Creating bus and peds spawn
-local bus = GetHashkey("bus")
+local bus = {
+    {hash= 0xD577C962, x= 463.358, y= -641.627, z= 27.958, a=28.954}
+    
+    }
+
 local ped = {
-   {type=4,GetHashkey("ig_trafficwarden"), x= -402.246, y= -650.092, z= 28.188, a= 46.395}
+   {type=4, hash= 0x5719786d, x= 458.246, y= -637.092, z= 27.958, a= 46.395}
+    }
 
 
 -- Loading at map start
@@ -54,7 +59,7 @@ for _, item in pairs(peds) do
 
 			
 -- Bus station blip
-busstation = AddBlipForCoord(-402.246, -650.092, 28.188)
+busstation = AddBlipForCoord(-463.358, -641.092, 27.958)
 SetBlipSprite(busstation, 66)
 SetBlipDisplay(busstation, 4)
 SetBlipColor(busstation, 2)
