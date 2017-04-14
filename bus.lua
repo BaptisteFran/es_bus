@@ -2,34 +2,35 @@ onJob = 0
 local player = PlayerId()
 
 -- Configure the coordinates where the bus should be placed. // Il faudrait utiliser GetHashKey("bus") // We should use GetHashKey("bus")
-local bus = {
-   { hash=0xD577C962, x=460.532, y=-640.445, z=28.11, a=100.938 },
-   { hash=0xD577C962, x=455.207, y=-645.100, z=28.489, a=85.422 },
-  }
+local bus = GetHashkey("bus")
+
+   { bus, x=460.532, y=-640.445, z=28.11, a=100.938 },
+   { bus, x=455.207, y=-645.100, z=28.489, a=85.422 },
+  
 
 	-- Configure the coordinates where the bus drivers (npc) should be placed.
-local peds = {
-  {type=4, hash=0x7e6a64b7, x=490.422, y=-642.196, z=28.700, a=269.449},
-  {type=4, hash=0x7e6a64b7, x=495.422, y=-640.234, z=28.700, a=260.402},
-  {type=4, hash=0x7e6a64b7, x=500.742, y=-645.138, z=28.936, a=265.213},
-  }
+local peds = GetHashkey("ig_trafficwarden")
+  {type=4, peds, x=490.422, y=-642.196, z=28.700, a=269.449},
+  {type=4, peds, x=495.422, y=-640.234, z=28.700, a=260.402},
+  {type=4, peds, x=500.742, y=-645.138, z=28.936, a=265.213},
+  
 
 AddEventHandler('onClientMapStart', function()
-RequestModel(0xD577C962)
+RequestModel(bus)
 while not HasModelLoaded(0xD577C962) do
 	Wait(1)
 end
 
-RequestModel(0x7e6a64b7)
+RequestModel(peds)
 while not HasModelLoaded(0x7e6a64b7) do
 	Wait(1)
 end
 
 -- Set a blip on the map for Bus station -- 
-downtownc = AddBlipForCoord(900.461, -181.466, 73.89) -- /////// ADD BLIP BUS STATION COORD //////
-SetBlipSprite(Busstation, 66)
-SetBlipDisplay(Busstation, 3)
-SetBlipNameFromTextFile(Busstation, "BUS_BLIP")
+busstation = AddBlipForCoord(460.532, -640.445, 28.11)
+SetBlipSprite(busstation, 66)
+SetBlipDisplay(busstation, 3)
+SetBlipColour(busstation, 2)
 
 -- Spawn the bus to Bus station
 for _, item in pairs(bus) do
