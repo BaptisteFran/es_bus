@@ -4,7 +4,8 @@
 
 -- Creating bus and peds spawn
 local bus = GetHashkey("bus")
-local peds = GetHashkey("ig_trafficwarden")
+local ped = {
+   {type=4,GetHashkey("ig_trafficwarden"), x= -402.246, y= -650.092, z= 28.188, a= 46.395}
 
 
 -- Loading at map start
@@ -12,21 +13,43 @@ AddEventHandler('onClientMapStart', function()
 
 
 -- Making Bus & peds spawn
-RequestModel(0xD577C962)
+RequestModel(0xD577C962) -- Bus
 while not HadModelLoaded(0xD577C962) do
    Wait(1)
 end
     
-RequestModel(0x5719786d)
+RequestModel(0x5719786d) -- Ped
 while not HadModelLoaded(0x5719786d) do
    Wait(1)
-end    
+end
+         
+-- Spawning the BUS     
+         
+for _, item in pairs(bus) do
+	bus =  CreateVehicle(item.hash, item.x, item.y, item.z, item.a, false, false)
+	SetVehicleOnGroundProperly(bus)
+end
+         
+         
 
-vehicle_generator bus { -405.24, -650.09, 28.18, heading = 28.53 }
-spawnpoint peds { x = -402.24, y = -650.12, z = 28.18 }
--- create peds with weapons and 'relationship' 
-    
+-- Spawning the PEDS and giving them weapons and 'relationship'
+         
+for _, item in pairs(peds) do
+	ped = CreatePed(item.type, item.hash, item.x, item.y, item.z, item.a, false, true)
+	GiveWeaponToPed(ped, 0x99B507EA, 2800, false, true) -- knives
+	SetPedCombatAttributes(ped, 46, true)
+	SetPedFleeAttributes(ped, 0, 0)
+	SetPedArmour(ped, 100)
+	SetPedMaxHealth(ped, 100)
+	SetPedRelationshipGroupHash(ped, GetHashKey("CIVMALE"))
+	TaskStartScenarioInPlace(ped, "WORLD_HUMAN_GUARD_STAND_PATROL", 0, true)
+	SetPedCanRagdoll(ped, false)
+	SetPedDiesWhenInjured(ped, false)
+	end     
+         
+
+-- vehicle_generator bus { -405.24, -650.09, 28.18, heading = 28.53 } // Is it better?
 
 
-    
+      
 end)
