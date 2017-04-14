@@ -3,15 +3,15 @@ local player = PlayerId()
 
 -- Configure the coordinates where the bus should be placed. // Il faudrait utiliser GetHashKey("bus") // We should use GetHashKey("bus")
 local bus = {
-   { hash=0xD577C962, x=918.592, y=-166.732, z=74.250, a=100.938 }, -- changer coordonnées pour dépot bus // change coords for bus station
-   { hash=0xD577C962, x=917.207, y=-171.100, z=74.489, a=85.422 },  -- changer coordonnées pour dépot bus // change coords for bus station
+   { hash=0xD577C962, x=460.532, y=-640.445, z=28.11, a=100.938 },
+   { hash=0xD577C962, x=455.207, y=-645.100, z=28.489, a=85.422 },
   }
 
 	-- Configure the coordinates where the bus drivers (npc) should be placed.
 local peds = {
-  {type=4, hash=0x7e6a64b7, x=894.422, y=-182.196, z=74.700, a=269.449}, -- changer les coordonnées // change coords for bus station to set bus drivers
-  {type=4, hash=0x7e6a64b7, x=895.422, y=-180.234, z=74.700, a=260.402}, -- changer les coordonnées // change coords for bus station to set bus drivers
-  {type=4, hash=0x7e6a64b7, x=900.742, y=-174.138, z=73.936, a=265.213}, -- changer les coordonnées // change coords for bus station to set bus drivers
+  {type=4, hash=0x7e6a64b7, x=490.422, y=-642.196, z=28.700, a=269.449},
+  {type=4, hash=0x7e6a64b7, x=495.422, y=-640.234, z=28.700, a=260.402},
+  {type=4, hash=0x7e6a64b7, x=500.742, y=-645.138, z=28.936, a=265.213},
   }
 
 AddEventHandler('onClientMapStart', function()
