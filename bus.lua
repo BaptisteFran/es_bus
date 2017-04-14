@@ -1,6 +1,8 @@
 -- ped = ig_trafficwarden, 0x5719786d
 -- bus = bus, -713569950, 0xD577C962
 
+local player = PlayerId()
+
 
 -- Creating bus and peds spawn
 local bus = GetHashkey("bus")
@@ -50,6 +52,12 @@ for _, item in pairs(peds) do
 
 -- vehicle_generator bus { -405.24, -650.09, 28.18, heading = 28.53 } // Is it better?
 
+			
+-- Bus station blip
+busstation = AddBlipForCoord(-402.246, -650.092, 28.188)
+SetBlipSprite(busstation, 66)
+SetBlipDisplay(busstation, 4)
+SetBlipColor(busstation, 2)
 
       
 end)
