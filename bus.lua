@@ -61,3 +61,16 @@ SetBlipColor(busstation, 2)
 
       
 end)
+	
+	
+-- Now let's write the job part
+	-- Press DEL to get started
+	-- Get a BLIP for the nearest bus stop
+	-- Go there, wait for ped getting in bus
+	-- Peds pay 3$ when going on the bus
+	-- Go to next bus stop
+	-- Peds getting in or out
+	-- Repeat for an amount of bus stops (maybe not every on the city but build 2 or 3 bus lines)
+	-- Go back to Bus station when done
+
+
