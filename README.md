@@ -1,10 +1,9 @@
-# Bus job based on MarkViolla's taxi script
-This is based on the taxi Job.
-/!\ Not working at all for the moment !! /!\
+# Bus job based
+/!\ I AM REWRITING COMPLETLY THE SCRIPT /!\
 
 # TODO
 
-1. TEST IT !
+1. REWRITE COMPLETLY THE SCRIPT. 
 2. Put every bus stop coords.
 3. Add a Bus station coords (to spawns buses).
 4. Make more than 1 ped waiting at bus stops.
