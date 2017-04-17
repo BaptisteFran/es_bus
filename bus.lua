@@ -33,25 +33,25 @@ end
 -- Spawning the BUS     
          
 for _, item in pairs(bus) do
-	bus =  CreateVehicle(item.hash, item.x, item.y, item.z, item.a, false, false)
-	SetVehicleOnGroundProperly(bus)
+	buses =  CreateVehicle(item.hash, item.x, item.y, item.z, item.a, false, false)
+	SetVehicleOnGroundProperly(buses)
 end
          
          
 
 -- Spawning the PEDS and giving them weapons and 'relationship'
          
-for _, item in pairs(peds) do
-	ped = CreatePed(item.type, item.hash, item.x, item.y, item.z, item.a, false, true)
-	GiveWeaponToPed(ped, 0x99B507EA, 2800, false, true) -- knives
-	SetPedCombatAttributes(ped, 46, true)
-	SetPedFleeAttributes(ped, 0, 0)
-	SetPedArmour(ped, 100)
-	SetPedMaxHealth(ped, 100)
-	SetPedRelationshipGroupHash(ped, GetHashKey("CIVMALE"))
-	TaskStartScenarioInPlace(ped, "WORLD_HUMAN_GUARD_STAND_PATROL", 0, true)
-	SetPedCanRagdoll(ped, false)
-	SetPedDiesWhenInjured(ped, false)
+for _, item in pairs(ped) do
+	peds = CreatePed(item.type, item.hash, item.x, item.y, item.z, item.a, false, true)
+	GiveWeaponToPed(peds, 0x99B507EA, 2800, false, true) -- knives
+	SetPedCombatAttributes(peds, 46, true)
+	SetPedFleeAttributes(peds, 0, 0)
+	SetPedArmour(peds, 100)
+	SetPedMaxHealth(peds, 100)
+	SetPedRelationshipGroupHash(peds, GetHashKey("CIVMALE"))
+	TaskStartScenarioInPlace(peds, "WORLD_HUMAN_GUARD_STAND_PATROL", 0, true)
+	SetPedCanRagdoll(peds, false)
+	SetPedDiesWhenInjured(peds, false)
 	end     
          
 
