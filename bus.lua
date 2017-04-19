@@ -1,7 +1,7 @@
 -- ped = ig_trafficwarden, 0x5719786d, GetHashkey("ig_trafficwarden")
 -- bus = bus, -713569950, 0xD577C962, GetHashkey("bus")
 
-local player = PlayerId()
+local player = GetPlayerPed(-1)
 
 
 -- Creating bus and peds spawn
