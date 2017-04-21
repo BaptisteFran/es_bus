@@ -1,14 +1,6 @@
 # Bus job based
-/!\ I AM REWRITING COMPLETLY THE SCRIPT /!\
 
-# TODO
-
-1. REWRITE COMPLETLY THE SCRIPT. 
-2. Put every bus stop coords.
-3. Add a Bus station coords (to spawns buses).
-4. Make more than 1 ped waiting at bus stops.
-5. Make more than 1 ped getting in the bus.
-6. Make peds paying x$ when he gets in (or gets out)
-7. Bus job has to follow a path and not receive random bus stops
+Since i'm developping this for RP purpose, i will only make buses spawn at some bus station.
+You would have to go to the "pole emploi" (job changing building) to set your job to Bus driver and make ped pay for a ride ($10 for a ticket or 3000 if you want to)
 
 
