@@ -2,6 +2,9 @@
 -- bus = bus, -713569950, 0xD577C962, GetHashkey("bus")
 
 local player = GetPlayerPed(-1)
+local blip = {
+  {name="Bus station", colour=15, id=416, x=-463.358, y=-641.092, z=27.958},
+}
 
 
 -- Creating bus and peds spawn
@@ -59,13 +62,15 @@ for _, item in pairs(ped) do
 
 			
 -- Bus station blip
-busstation = AddBlipForCoord(-463.358, -641.092, 27.958)
-SetBlipSprite(busstation, 66)
-SetBlipDisplay(busstation, 4)
-SetBlipColor(busstation, 2)
-
-      
+Citizen.CreateThread(function()
+    for _, item in pairs(blip) do
+      item.blip = AddBlipForCoord(item.x, item.y, item.z)
+      SetBlipSprite(item.blip, item.id)
+      SetBlipAsShortRange(item.blip, true)
+      BeginTextCommandSetBlipName("STRING")
+      AddTextComponentString(item.name)
+      EndTextCommandSetBlipName(item.blip)
+    end
 end)
-	
 
-
+end)
