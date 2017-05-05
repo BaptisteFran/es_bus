@@ -17,6 +17,18 @@ local ped = {
    {type=4, hash= 0x5719786d, x= 458.246, y= -637.092, z= 27.958, a= 46.395}
     }
 
+-- function to check if player is in bus
+function IsInBus()
+  local ply = GetPlayerPed(-1)
+  local plyCoords = GetEntityCoords(ply, 0)
+  for _, item in pairs(changeYourJob) do
+    local distance = GetDistanceBetweenCoords(item.x, item.y, item.z,  plyCoords["x"], plyCoords["y"], plyCoords["z"], true)
+    if(distance <= 10) then
+      return true
+    end
+  end
+end
+
 
 -- Loading at map start
 AddEventHandler('onClientMapStart', function()
@@ -74,3 +86,13 @@ Citizen.CreateThread(function()
 end)
 
 end)
+
+
+-- JOB PART --
+
+jobs = {peds = {}, flag = {}, blip = {}, cars = {}, coords = {cx={}, cy={}, cz={}}}
+
+function StartJob(jobid)
+	if jobid == 6 then -- Bus job ID
+		showLoadingPromt("Loading bus mission", 2000, 3)
+		jobs.coords.cx[1],jobs.coords.cy[1],jobs.coords.cz[1] = 293.476,-590.163,42.7371 -- Set Bus stops coords
